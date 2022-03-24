@@ -1,0 +1,68 @@
+{% extends "layout/_base.html" %}
+{% block title %}Display Post Detail{% endblock %}
+{% block body %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarTogglerDemo01"
+                    aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/user-app">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/user-app/display-posts">Display posts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/user-app/new-post">Creat Post</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/user-app/week-posts">Posts of Week</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/admin">Admin
+                            Panel</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <center>
+        <div>
+            <div class="card" style="width:30rem;margin-top: 30px;background-color: aquamarine">
+                <br>
+                <h5 class="card-title">User : {{ object.user.email }}</h5>
+                <p class="card-text">Date : {{ object.date }}</p>
+                <img src="{{ object.image.url }}" class="card-img-top" alt="image">
+                <div class="card-body">
+                    <h5 class="card-title">Title : {{ object.title }}</h5>
+                    <p class="card-text">Text : {{ object.text }}</p>
+                    <a href="/user-app/new-comment/{{ object.id }}" class="btn btn-primary">Add your comment</a>
+                </div>
+            </div>
+            <br>
+            <h3>Comments on this post</h3>
+            <div class="card" style="width:30rem;margin-top: 30px;background-color: aquamarine">
+                {% for comment in comments %}
+                    {% if comment.post_id == object.id %}
+                        {% for user in users %}
+                            {% if user.id == comment.user_id %}
+                                <div style="border: 1px solid violet; margin-top: 20px;margin-bottom: 20px">
+                                    <br>
+                                    <h6>{{ user.email }} : {{ comment.text }}</h6>
+                                    <p>{{ comment.date }}</p>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </center>
+{% endblock %}
