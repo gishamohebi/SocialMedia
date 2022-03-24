@@ -2,8 +2,8 @@
 Django mini project for practice
 
 Goals of the project were working with : 
-django models 
-sqlite3 db
+django models ,
+sqlite3 db ,
 generic views
 
 
