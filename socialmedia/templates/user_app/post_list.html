@@ -1,0 +1,55 @@
+{% extends "layout/_base.html" %}
+{% block title %}Display Posts{% endblock %}
+
+
+{% block body %}
+
+    {% load static %}
+    <link href="{% static "user_app/display_posts.css" %}" rel="stylesheet"/>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarTogglerDemo01"
+                    aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/user-app">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/user-app/new-post">Creat Post</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/user-app/week-posts">Posts of Week</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/admin">Admin
+                            Panel</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br>
+    <center>
+        <h2 style="color: blanchedalmond">
+            Here we have {{ object_list|length }} post{{ object_list|length|pluralize }} from these users:
+        </h2>
+    </center>
+    <ol>
+        {% for post in object_list %}
+
+            <li class="">
+                <a href="/user-app/postdetail/{{ post.id }}">
+                    {{ post.user }} Posted on {{ post.date }}
+                </a>
+            </li>
+            <center>
+                <img style="width: 400px ; height: auto;" src="{{ post.image.url }}">
+            </center>
+        {% endfor %}
+    </ol>
+{% endblock %}

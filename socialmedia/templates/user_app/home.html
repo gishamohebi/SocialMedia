@@ -1,0 +1,42 @@
+
+
+{% extends "layout/_base.html" %}
+{% block title %}HOME{% endblock %}
+{% block body %}
+    <center>
+        <div class="card text-center"
+             style="
+         width: 18rem;
+         display: flex;
+         margin-top: 30px;
+         background-color: lightyellow;
+">
+            <span class="placeholder col-12 bg-success"></span>
+            <div class="card-body">
+                <h5 class="card-title">Admin Panel</h5>
+                <p class="card-text">Admin click here to log in</p>
+                <a href="http://127.0.0.1:8000/admin" class="btn btn-primary">Admin Panel</a>
+            </div>
+            <span class="placeholder col-12 bg-info"></span>
+            <div class="card-body">
+                <h5 class="card-title">Display Posts</h5>
+                <p class="card-text">To check posts of users check here</p>
+                <a href="display-posts" class="btn btn-primary">Display Posts</a>
+            </div>
+            <span class="placeholder col-12 bg-success"></span>
+            <div class="card-body">
+                <h5 class="card-title">Creat Post</h5>
+                <p class="card-text">Add your post!</p>
+                <a href="new-post" class="btn btn-primary">Creat Post</a>
+            </div>
+            <span class="placeholder col-12 bg-info"></span>
+            <div class="card-body">
+                <h5 class="card-title">Posts of Week</h5>
+                <p class="card-text">To check posts of last week check here</p>
+                <a href="week-posts" class="btn btn-primary">Posts of Week</a>
+            </div>
+            <span class="placeholder col-12 bg-success"></span>
+        </div>
+    </center>
+
+{% endblock %}
